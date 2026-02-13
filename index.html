@@ -12,18 +12,23 @@ body{
     height:100vh;
 }
 
-/* BACKGROUND DEFAULT (Page1 & Page2) */
+/* BACKGROUND USING CSS VARIABLE */
 body::before{
     content:'';
     position:fixed;
     top:0; left:0;
     width:100%;
     height:100%;
-    background-image:url('img/rose2.jpg'); /* rose2 for first two pages */
+    background-image:var(--bg-image);
     background-size:cover;
     background-position:center;
     z-index:-2;
     transition:0.6s ease;
+}
+
+/* Default background (Page1 & Page2) */
+:root{
+    --bg-image: url('img/rose2.jpg');
 }
 
 .blur-overlay{
@@ -233,13 +238,6 @@ body::before{
     text-shadow:0 0 20px #ff3366;
     z-index:9998;
 }
-
-/* Mobile */
-@media(max-width:768px){
-    #finalText{width:90%;}
-    #finalMsg{width:90%; bottom:200px;}
-    #noTextAfterHover{width:90%; bottom:150px;}
-}
 </style>
 </head>
 
@@ -347,7 +345,10 @@ document.getElementById("yes1").onclick=function(){
 okBtn.onclick=function(){
     page2.classList.add("hidden");
     page3.classList.remove("hidden");
-    document.body.style.backgroundImage="url('img/rose1.jpg')";
+
+    /* Change to rose1 for page3 */
+    document.documentElement.style.setProperty('--bg-image',"url('img/rose1.jpg')");
+
     hearts();
 }
 
