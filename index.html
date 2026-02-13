@@ -12,7 +12,12 @@ body{
     height:100vh;
 }
 
-/* PAGE BACKGROUNDS */
+/* REMOVE OLD BODY BACKGROUND */
+body::before{
+    display:none;
+}
+
+/* PAGE COMMON */
 .page{
     position:absolute;
     width:100%;
@@ -29,22 +34,17 @@ body{
     background-position:center;
 }
 
+/* PAGE 1 & 2 BACKGROUND (BLUR) */
 #page1, #page2{
     background-image:url('img/rose3.jpg');
 }
 
-#page3{
-    background-image:url('img/rose2.jpg');
-    position:relative;
-    overflow:hidden;
-}
-
 .blur-overlay{
-    position:absolute;
+    position:fixed;
     width:100%;
     height:100%;
+    background:rgba(0,0,0,0.3);
     backdrop-filter:blur(8px);
-    background:rgba(0,0,0,0.4);
     z-index:0;
 }
 
@@ -74,6 +74,10 @@ body{
     margin-bottom:30px;
     color:white;
 }
+#page1 .btn{
+    margin:15px;
+}
+
 .btn{
     padding:12px 25px;
     font-size:clamp(14px,4vw,18px);
@@ -100,7 +104,18 @@ body{
     cursor:not-allowed;
 }
 
-/* PAGE 3 TEXT */
+/* PAGE 3 */
+#page3{
+    position:relative;
+    width:100%;
+    height:100vh;
+    overflow:hidden;
+    background-image:url('img/rose2.jpg');
+    background-size:cover;
+    background-position:center;
+}
+
+/* TEXT */
 #finalText,
 #finalMsg,
 #noTextAfterHover{
@@ -141,7 +156,7 @@ body{
     width:45%;
     font-size:clamp(16px,4vw,20px);
     font-weight:bold;
-    color:white;
+    color:black;
     display:none;
 }
 
@@ -213,6 +228,7 @@ body{
     cursor:pointer;
 }
 
+/* HAPPY MESSAGE */
 #happyMessage{
     position:absolute;
     top:50%;
@@ -231,11 +247,12 @@ body{
 
 <body>
 
+<div class="blur-overlay"></div>
+
 <!-- PAGE 1 -->
 <div id="page1" class="page">
-<div class="blur-overlay"></div>
     <h1>Delelu, Will You Be My Valentine? ❤️</h1>
-    <h2>Delelu Firstu 'NO' button ni velli pattukooo... pattukundaam ante dorakkundaa Paaripothundaa.....ithe 😜</h2>
+    <h2>YES cheppalo NO cheppalo theliyatledhaa...Ithe Firstu 'NO' button ni velli pattukooo... pattukundaam ante dorakkundaa Paaripothundaa.....ithe 😜</h2>
     <div>
         <button id="yes1" class="btn">Yes 💖</button>
         <button id="no1" class="btn">No 😜</button>
@@ -244,7 +261,6 @@ body{
 
 <!-- PAGE 2 -->
 <div id="page2" class="page hidden">
-<div class="blur-overlay"></div>
     <h2>
         hloo kangaru ipoku... naalo vibrations yekkuvaipoyay..andhuke nee phone ki konni vibrations pampinchaanu.....  
         vibrations vachaay kadaaa marii inkendhuku alochistunnav velli 'okay' ni hug chesukoooo... 😌
@@ -286,22 +302,22 @@ body{
     </div>
 </div>
 
-<!-- POPUP -->
+<!-- ALERT -->
 <div id="finalPopup">
     <h3>💖 Delelu said YES! 💖</h3>
     <p>
-    😏 Vijju : yenti blusing movement ahh?...<br><br>
+    😏 Tharun : yenti blusing movement ahh?...<br><br>
     🙈 Delelu : aha alaa am ledhu andi...<br><br>
-    😄 Vijju : Nakendhuko konchem navvuthunnattu anipistundhe ?....<br><br>
+    😄 Tharun : Nakendhuko konchem navvuthunnattu anipistundhe ?....<br><br>
     😊 Delelu : Haa andi Konchem.....<br><br>
-    ❤️ Vijju : Delelu ki inkaaa yekkuvaga & chaala chaala love you❤️... boledenni chocolattulu🍫.... and Delelu ki ivee maa mudhulu.... 💋<br><br>
+    ❤️ Tharun : Delelu ki inkaaa yekkuvaga & chaala chaala love you❤️... boledenni chocolattulu🍫.... and Delelu ki ivee maa mudhulu.... 💋<br><br>
     🙈 Delelu : Baaaboiii am cheppali ippudu....simple gaa close kotteddam.....
     </p>
     <button onclick="closeFinalPopup()">Close</button>
 </div>
 
 <script>
-// JS remains EXACTLY SAME as your original
+/* YOUR ENTIRE JS CODE REMAINS EXACT SAME */
 </script>
 
 </body>
