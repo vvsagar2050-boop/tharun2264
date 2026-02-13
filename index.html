@@ -12,7 +12,7 @@ body{
     height:100vh;
 }
 
-/* BACKGROUND */
+/* BACKGROUND DEFAULT (Page1 & Page2) */
 body::before{
     content:'';
     position:fixed;
@@ -104,13 +104,6 @@ body::before{
     width:100%;
     height:100vh;
     overflow:hidden;
-}
-#page3 img{
-    position:absolute;
-    width:100%;
-    height:100%;
-    object-fit:cover;
-    z-index:-1;
 }
 
 /* TEXT */
@@ -240,6 +233,13 @@ body::before{
     text-shadow:0 0 20px #ff3366;
     z-index:9998;
 }
+
+/* Mobile */
+@media(max-width:768px){
+    #finalText{width:90%;}
+    #finalMsg{width:90%; bottom:200px;}
+    #noTextAfterHover{width:90%; bottom:150px;}
+}
 </style>
 </head>
 
@@ -250,7 +250,7 @@ body::before{
 <!-- PAGE 1 -->
 <div id="page1" class="page">
     <h1>Delelu, Will You Be My Valentine? ❤️</h1>
-    <h2>YES cheppalo NO cheppalo theliyatledhaa...Ithe Firstu 'NO' button ni velli pattukooo... 😜</h2>
+    <h2>YES cheppalo NO cheppalo theliyatledhaa...Ithe Firstu 'NO' button ni velli pattukooo... pattukundaam ante dorakkundaa Paaripothundaa.....ithe 😜</h2>
     <div>
         <button id="yes1" class="btn">Yes 💖</button>
         <button id="no1" class="btn">No 😜</button>
@@ -260,21 +260,33 @@ body::before{
 <!-- PAGE 2 -->
 <div id="page2" class="page hidden">
     <h2>
-        hloo kangaru ipoku... naalo vibrations yekkuvaipoyay..andhuke nee phone ki konni vibrations pampinchaanu...
+        hloo kangaru ipoku... naalo vibrations yekkuvaipoyay..andhuke nee phone ki konni vibrations pampinchaanu.....  
+        vibrations vachaay kadaaa marii inkendhuku alochistunnav velli 'okay' ni hug chesukoooo... 😌
     </h2>
     <button id="okBtn" class="btn" disabled>OKAY 😌</button>
 </div>
 
 <!-- PAGE 3 -->
 <div id="page3" class="page hidden">
-    <img src="img/rose1.jpg" alt="Love Image"> <!-- rose1 for last page -->
 
     <div id="finalText">
-        Please nuv naa Seethavi Avuthava?? 🤌🏻💖
+        Anjaneyudi balam🔥💪...
+        Anna maata javadaatani Lakshmanudu⚔️...
+        Ichina maata kosam sainyanni ventesukochina Sugreevudu🛡️🐒...
+        Veellandarini thisukuni Seetha kosam antha dooram velladu Raamudu🏹...
+        naku veellu yevaru lekapoina, naa Seetha kosam💖 yentha dooramina velthanu🚶‍♂️🌍...
+        <strong class="mainQuestion">
+            Please nuv naa Seethavi Avuthava?? 🤌🏻💖
+        </strong>
     </div>
 
     <div id="finalMsg">
-        Please Delelu oppukovachu kadaa.... 😇
+        Please Delelu oppukovachu kadaa.... 😇  
+        Oppukokapothe neeku dammunte 'No' meeda cheyyi vesi chudu 😜
+    </div>
+
+    <div id="noTextAfterHover">
+        No meeda cheyyi vesthe miss ipoyindha.... ithe......
     </div>
 
     <div id="proposalBtns">
@@ -294,7 +306,10 @@ body::before{
     <p>
     😏 Tharun : yenti blusing movement ahh?...<br><br>
     🙈 Delelu : aha alaa am ledhu andi...<br><br>
-    ❤️ Tharun : Delelu ki chaala chaala love you ❤️
+    😄 Tharun : Nakendhuko konchem navvuthunnattu anipistundhe ?....<br><br>
+    😊 Delelu : Haa andi Konchem.....<br><br>
+    ❤️ Tharun : Delelu ki inkaaa yekkuvaga & chaala chaala love you❤️... boledenni chocolattulu🍫.... and Delelu ki ivee maa mudhulu.... 💋<br><br>
+    🙈 Delelu : Baaaboiii am cheppali ippudu....simple gaa close kotteddam.....
     </p>
     <button onclick="closeFinalPopup()">Close</button>
 </div>
@@ -305,8 +320,22 @@ const page2=document.getElementById("page2");
 const page3=document.getElementById("page3");
 const finalPopup=document.getElementById("finalPopup");
 const okBtn=document.getElementById("okBtn");
+const reject=document.getElementById("reject");
+const noTextAfterHover=document.getElementById("noTextAfterHover");
 const happyMessage=document.getElementById("happyMessage");
 
+let flowerInterval;
+
+/* PAGE1 NO RUN */
+function move(btn){
+    btn.style.position="absolute";
+    btn.style.left=Math.random()*(window.innerWidth-100)+"px";
+    btn.style.top=Math.random()*(window.innerHeight-50)+"px";
+}
+document.getElementById("no1").onmouseover=
+document.getElementById("no1").ontouchstart=function(){move(this);}
+
+/* PAGE1 YES */
 document.getElementById("yes1").onclick=function(){
     page1.classList.add("hidden");
     page2.classList.remove("hidden");
@@ -314,22 +343,31 @@ document.getElementById("yes1").onclick=function(){
     setTimeout(()=>{ okBtn.disabled=false; },5000);
 }
 
+/* PAGE2 OK */
 okBtn.onclick=function(){
     page2.classList.add("hidden");
     page3.classList.remove("hidden");
-
-    /* CHANGE BACKGROUND TO rose1 */
-    document.body.style.setProperty('--dummy','0');
-    document.styleSheets[0].addRule("body::before","background-image:url('img/rose1.jpg')");
+    document.body.style.backgroundImage="url('img/rose1.jpg')";
+    hearts();
 }
 
-document.getElementById("accept").onclick=function(){
-    finalPopup.style.display="block";
+/* PAGE3 NO */
+reject.onmouseover=reject.ontouchstart=function(){
+    this.style.display="none";
+    noTextAfterHover.style.display="block";
 }
 
-function closeFinalPopup(){
-    finalPopup.style.display="none";
-    happyMessage.style.display="block";
+/* HEARTS */
+function hearts(){
+    setInterval(()=>{
+        const heart=document.createElement("div");
+        heart.className="heart";
+        heart.innerHTML="❤️";
+        heart.style.left=Math.random()*window.innerWidth+"px";
+        heart.style.top=window.innerHeight+"px";
+        page3.appendChild(heart);
+        setTimeout(()=>heart.remove(),3000);
+    },300);
 }
 </script>
 
