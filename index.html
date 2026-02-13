@@ -30,6 +30,7 @@ body::before{
     --bg-image: url('img/rose2.jpg');
 }
 
+/* BLUR OVERLAY */
 .blur-overlay{
     position:fixed;
     width:100%;
@@ -37,6 +38,12 @@ body::before{
     background:rgba(0,0,0,0.3);
     backdrop-filter:blur(6px);
     z-index:-1;
+    transition:0.4s;
+}
+
+.blur-active{
+    backdrop-filter:blur(15px);
+    background:rgba(0,0,0,0.5);
 }
 
 /* COMMON */
@@ -75,12 +82,13 @@ body::before{
     overflow:hidden;
 }
 
-/* YOUR TEXT (responsive fix only) */
+/* TEXT */
 #finalText{
     position:absolute;
     top:6%;
     left:5%;
     width:90%;
+    max-width:700px;
     font-size:18px;
     line-height:1.8;
     text-align:left;
@@ -95,28 +103,32 @@ body::before{
 
 #finalMsg{
     position:absolute;
-    bottom:150px;
+    bottom:170px;
     left:5%;
     width:90%;
+    max-width:700px;
     font-size:16px;
     font-weight:bold;
     color:white;
 }
 
+/* FIXED HERE */
 #noTextAfterHover{
     position:absolute;
-    bottom:120px;
+    bottom:130px;
     left:5%;
     width:90%;
+    max-width:700px;
     font-size:16px;
     font-weight:bold;
-    color:black;
+    color:white; /* changed to white */
     display:none;
+    margin-top:15px;
 }
 
 #proposalBtns{
     position:absolute;
-    bottom:60px;
+    bottom:70px;
     left:5%;
     width:90%;
     display:flex;
@@ -158,33 +170,39 @@ body::before{
     color:white;
 }
 
-#finalPopup button{
-    margin-top:15px;
-    padding:10px 20px;
-    border:none;
-    border-radius:8px;
-    background:#ff3366;
-    color:white;
-}
-
-/* HAPPY TEXT */
+/* HAPPY SCREEN */
 #happyMessage{
     position:absolute;
     top:50%;
     left:50%;
     transform:translate(-50%,-50%);
-    font-size:28px;
+    font-size:32px;
     color:white;
     text-align:center;
     display:none;
     font-weight:bold;
+}
+
+/* DESKTOP IMPROVEMENT */
+@media(min-width:768px){
+    #finalText{
+        width:50%;
+        font-size:20px;
+    }
+    #finalMsg,
+    #noTextAfterHover{
+        width:50%;
+    }
+    #proposalBtns{
+        width:50%;
+    }
 }
 </style>
 </head>
 
 <body>
 
-<div class="blur-overlay"></div>
+<div class="blur-overlay" id="blurOverlay"></div>
 
 <!-- PAGE 1 -->
 <div id="page1" class="page">
@@ -261,6 +279,8 @@ const okBtn=document.getElementById("okBtn");
 const reject=document.getElementById("reject");
 const accept=document.getElementById("accept");
 const finalPopup=document.getElementById("finalPopup");
+const happyMessage=document.getElementById("happyMessage");
+const blurOverlay=document.getElementById("blurOverlay");
 
 /* PAGE1 NO MOVE */
 function move(btn){
@@ -296,11 +316,14 @@ reject.onclick=function(){
 /* PAGE3 YES */
 accept.onclick=function(){
     finalPopup.style.display="block";
+    blurOverlay.classList.add("blur-active");
 }
 
 /* CLOSE POPUP */
 function closeFinalPopup(){
     finalPopup.style.display="none";
+    blurOverlay.classList.remove("blur-active");
+    happyMessage.style.display="block";
 }
 
 /* HEARTS */
