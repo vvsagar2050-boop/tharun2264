@@ -12,7 +12,7 @@ body{
     height:100vh;
 }
 
-/* BACKGROUND USING CSS VARIABLE */
+/* BACKGROUND */
 body::before{
     content:'';
     position:fixed;
@@ -26,7 +26,6 @@ body::before{
     transition:0.6s ease;
 }
 
-/* Default background (Page1 & Page2) */
 :root{
     --bg-image: url('img/rose2.jpg');
 }
@@ -36,11 +35,11 @@ body::before{
     width:100%;
     height:100%;
     background:rgba(0,0,0,0.3);
-    backdrop-filter:blur(8px);
+    backdrop-filter:blur(6px);
     z-index:-1;
 }
 
-/* PAGE COMMON */
+/* COMMON */
 .page{
     position:absolute;
     width:100%;
@@ -52,79 +51,38 @@ body::before{
     text-align:center;
     padding:20px;
     box-sizing:border-box;
-    transition:0.5s;
 }
 .hidden{
     opacity:0;
     pointer-events:none;
 }
 
-.blur-page{
-    filter:blur(8px);
-}
-
-/* PAGE 1 */
-#page1 h1{
-    font-size:clamp(26px,6vw,46px);
-    margin-bottom:20px;
-    text-shadow:0 0 20px #ff4da6;
-}
-#page1 h2{
-    font-size:clamp(16px,4vw,22px);
-    margin-bottom:30px;
-}
-#page1 .btn{
-    margin:15px;
-}
-
 .btn{
     padding:12px 25px;
-    font-size:clamp(14px,4vw,18px);
+    font-size:16px;
     border:none;
     border-radius:8px;
     cursor:pointer;
 }
 #yes1{background:#ff3366;color:white;}
 #no1{background:black;color:white;position:relative;}
-
-/* PAGE 2 */
-#page2 h2{
-    font-size:clamp(22px,5vw,30px);
-    color:black;
-    max-width:700px;
-    text-shadow:0 0 10px red;
-}
-#okBtn{
-    background:#ff3366;
-    color:white;
-}
-#okBtn:disabled{
-    background:gray;
-    cursor:not-allowed;
-}
+#okBtn{background:#ff3366;color:white;}
+#okBtn:disabled{background:gray;cursor:not-allowed;}
 
 /* PAGE 3 */
 #page3{
     position:relative;
-    width:100%;
-    height:100vh;
     overflow:hidden;
 }
 
-/* TEXT */
-#finalText,
-#finalMsg,
-#noTextAfterHover{
-    text-shadow: 1px 1px 4px rgba(0,0,0,0.7);
-}
-
+/* YOUR TEXT (responsive fix only) */
 #finalText{
     position:absolute;
-    top:5%;
+    top:6%;
     left:5%;
-    width:45%;
-    font-size:clamp(18px,4vw,26px);
-    line-height:2;
+    width:90%;
+    font-size:18px;
+    line-height:1.8;
     text-align:left;
     color:white;
     font-weight:500;
@@ -132,15 +90,15 @@ body::before{
 
 .mainQuestion{
     display:block;
-    margin-top:30px;
+    margin-top:20px;
 }
 
 #finalMsg{
     position:absolute;
-    bottom:170px;
+    bottom:150px;
     left:5%;
-    width:45%;
-    font-size:clamp(16px,4vw,20px);
+    width:90%;
+    font-size:16px;
     font-weight:bold;
     color:white;
 }
@@ -149,8 +107,8 @@ body::before{
     position:absolute;
     bottom:120px;
     left:5%;
-    width:45%;
-    font-size:clamp(16px,4vw,20px);
+    width:90%;
+    font-size:16px;
     font-weight:bold;
     color:black;
     display:none;
@@ -158,10 +116,11 @@ body::before{
 
 #proposalBtns{
     position:absolute;
-    bottom:40px;
+    bottom:60px;
     left:5%;
+    width:90%;
     display:flex;
-    gap:8px;
+    gap:10px;
 }
 #proposalBtns .btn{
     background:#ff3366;
@@ -174,7 +133,7 @@ body::before{
 /* HEARTS */
 .heart{
     position:absolute;
-    font-size:clamp(20px,5vw,28px);
+    font-size:24px;
     animation:float 3s linear forwards;
 }
 @keyframes float{
@@ -182,61 +141,43 @@ body::before{
     100%{transform:translateY(-300px);opacity:0;}
 }
 
-/* FALLING FLOWERS */
-.falling{
-    position:absolute;
-    font-size:22px;
-    animation:fall 3s linear forwards;
-    pointer-events:none;
-}
-@keyframes fall{
-    0%{transform:translateY(-50px) rotate(0deg);}
-    100%{transform:translateY(100vh) rotate(360deg);}
-}
-
-/* ALERT */
+/* POPUP */
 #finalPopup{
     position:fixed;
-    top:18%;
+    top:15%;
     left:50%;
     transform:translateX(-50%);
-    padding:30px 25px;
-    border-radius:20px;
-    text-align:left;
-    font-size:16px;
+    padding:25px;
+    border-radius:15px;
+    font-size:15px;
     z-index:9999;
     display:none;
     width:90%;
     max-width:420px;
     background:black;
     color:white;
-    box-shadow:0 0 40px rgba(255,0,100,0.6);
 }
 
 #finalPopup button{
-    margin-top:20px;
+    margin-top:15px;
     padding:10px 20px;
     border:none;
     border-radius:8px;
     background:#ff3366;
     color:white;
-    font-weight:bold;
-    cursor:pointer;
 }
 
-/* HAPPY MESSAGE */
+/* HAPPY TEXT */
 #happyMessage{
     position:absolute;
     top:50%;
     left:50%;
     transform:translate(-50%,-50%);
-    font-size:clamp(28px,6vw,50px);
+    font-size:28px;
     color:white;
     text-align:center;
     display:none;
     font-weight:bold;
-    text-shadow:0 0 20px #ff3366;
-    z-index:9998;
 }
 </style>
 </head>
@@ -298,7 +239,7 @@ body::before{
     </div>
 </div>
 
-<!-- ALERT -->
+<!-- POPUP -->
 <div id="finalPopup">
     <h3>💖 Delelu said YES! 💖</h3>
     <p>
@@ -316,15 +257,12 @@ body::before{
 const page1=document.getElementById("page1");
 const page2=document.getElementById("page2");
 const page3=document.getElementById("page3");
-const finalPopup=document.getElementById("finalPopup");
 const okBtn=document.getElementById("okBtn");
 const reject=document.getElementById("reject");
-const noTextAfterHover=document.getElementById("noTextAfterHover");
-const happyMessage=document.getElementById("happyMessage");
+const accept=document.getElementById("accept");
+const finalPopup=document.getElementById("finalPopup");
 
-let flowerInterval;
-
-/* PAGE1 NO RUN */
+/* PAGE1 NO MOVE */
 function move(btn){
     btn.style.position="absolute";
     btn.style.left=Math.random()*(window.innerWidth-100)+"px";
@@ -337,25 +275,32 @@ document.getElementById("no1").ontouchstart=function(){move(this);}
 document.getElementById("yes1").onclick=function(){
     page1.classList.add("hidden");
     page2.classList.remove("hidden");
-    if(navigator.vibrate){ navigator.vibrate(5000); }
-    setTimeout(()=>{ okBtn.disabled=false; },5000);
+    if(navigator.vibrate){navigator.vibrate(4000);}
+    setTimeout(()=>{okBtn.disabled=false;},4000);
 }
 
 /* PAGE2 OK */
 okBtn.onclick=function(){
     page2.classList.add("hidden");
     page3.classList.remove("hidden");
-
-    /* Change to rose1 for page3 */
     document.documentElement.style.setProperty('--bg-image',"url('img/rose1.jpg')");
-
     hearts();
 }
 
 /* PAGE3 NO */
-reject.onmouseover=reject.ontouchstart=function(){
+reject.onclick=function(){
     this.style.display="none";
-    noTextAfterHover.style.display="block";
+    document.getElementById("noTextAfterHover").style.display="block";
+}
+
+/* PAGE3 YES */
+accept.onclick=function(){
+    finalPopup.style.display="block";
+}
+
+/* CLOSE POPUP */
+function closeFinalPopup(){
+    finalPopup.style.display="none";
 }
 
 /* HEARTS */
@@ -365,10 +310,10 @@ function hearts(){
         heart.className="heart";
         heart.innerHTML="❤️";
         heart.style.left=Math.random()*window.innerWidth+"px";
-        heart.style.top=window.innerHeight+"px";
+        heart.style.bottom="0px";
         page3.appendChild(heart);
         setTimeout(()=>heart.remove(),3000);
-    },300);
+    },400);
 }
 </script>
 
