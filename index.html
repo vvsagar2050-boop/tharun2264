@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>For Padhu ❤️</title>
+<title>For Delelu ❤️</title>
 
 <style>
 body{
@@ -19,10 +19,11 @@ body::before{
     top:0; left:0;
     width:100%;
     height:100%;
-    background-image:url('img/rose1.jpg');
+    background-image:url('img/rose2.jpg'); /* rose2 for first two pages */
     background-size:cover;
     background-position:center;
     z-index:-2;
+    transition:0.6s ease;
 }
 
 .blur-overlay{
@@ -188,7 +189,7 @@ body::before{
     position:absolute;
     font-size:22px;
     animation:fall 3s linear forwards;
-    pointer-events:none; /* FIX */
+    pointer-events:none;
 }
 @keyframes fall{
     0%{transform:translateY(-50px) rotate(0deg);}
@@ -212,8 +213,6 @@ body::before{
     background:black;
     color:white;
     box-shadow:0 0 40px rgba(255,0,100,0.6);
-    will-change:transform;           /* FIX */
-    backface-visibility:hidden;      /* FIX */
 }
 
 #finalPopup button{
@@ -241,13 +240,6 @@ body::before{
     text-shadow:0 0 20px #ff3366;
     z-index:9998;
 }
-
-/* Mobile */
-@media(max-width:768px){
-    #finalText{width:90%;}
-    #finalMsg{width:90%; bottom:200px;}
-    #noTextAfterHover{width:90%; bottom:150px;}
-}
 </style>
 </head>
 
@@ -257,8 +249,8 @@ body::before{
 
 <!-- PAGE 1 -->
 <div id="page1" class="page">
-    <h1>Padhu, Will You Be My Valentine? ❤️</h1>
-    <h2>YES cheppalo NO cheppalo theliyatledhaa...Ithe Firstu 'NO' button ni velli pattukooo... pattukundaam ante dorakkundaa Paaripothundaa.....ithe 😜</h2>
+    <h1>Delelu, Will You Be My Valentine? ❤️</h1>
+    <h2>YES cheppalo NO cheppalo theliyatledhaa...Ithe Firstu 'NO' button ni velli pattukooo... 😜</h2>
     <div>
         <button id="yes1" class="btn">Yes 💖</button>
         <button id="no1" class="btn">No 😜</button>
@@ -268,34 +260,21 @@ body::before{
 <!-- PAGE 2 -->
 <div id="page2" class="page hidden">
     <h2>
-        hloo kangaru ipoku... naalo vibrations yekkuvaipoyay..andhuke nee phone ki konni vibrations pampinchaanu.....  
-        vibrations vachaay kadaaa marii inkendhuku alochistunnav velli 'okay' ni hug chesukoooo... 😌
+        hloo kangaru ipoku... naalo vibrations yekkuvaipoyay..andhuke nee phone ki konni vibrations pampinchaanu...
     </h2>
     <button id="okBtn" class="btn" disabled>OKAY 😌</button>
 </div>
 
 <!-- PAGE 3 -->
 <div id="page3" class="page hidden">
-    <img src="img/p6.jpg" alt="Love Image">
+    <img src="img/rose1.jpg" alt="Love Image"> <!-- rose1 for last page -->
 
     <div id="finalText">
-        Anjaneyudi balam🔥💪...
-        Anna maata javadaatani Lakshmanudu⚔️...
-        Ichina maata kosam sainyanni ventesukochina Sugreevudu🛡️🐒...
-        Veellandarini thisukuni Seetha kosam antha dooram velladu Raamudu🏹...
-        naku veellu yevaru lekapoina, naa Seetha kosam💖 yentha dooramina velthanu🚶‍♂️🌍...
-        <strong class="mainQuestion">
-            Please nuv naa Seethavi Avuthava?? 🤌🏻💖
-        </strong>
+        Please nuv naa Seethavi Avuthava?? 🤌🏻💖
     </div>
 
     <div id="finalMsg">
-        Please Padhu oppukovachu kadaa.... 😇  
-        Oppukokapothe neeku dammunte 'No' meeda cheyyi vesi chudu 😜
-    </div>
-
-    <div id="noTextAfterHover">
-        No meeda cheyyi vesthe miss ipoyindha.... ithe......
+        Please Delelu oppukovachu kadaa.... 😇
     </div>
 
     <div id="proposalBtns">
@@ -304,21 +283,18 @@ body::before{
     </div>
 
     <div id="happyMessage">
-        ❤️🌹 Happy Valentine’s Day Padhu 🌹❤️ <br>
+        ❤️🌹 Happy Valentine’s Day Delelu 🌹❤️ <br>
         💖 Forever & Always 💖
     </div>
 </div>
 
 <!-- ALERT -->
 <div id="finalPopup">
-    <h3>💖 Padhu said YES! 💖</h3>
+    <h3>💖 Delelu said YES! 💖</h3>
     <p>
-    😏 Vijju : yenti blusing movement ahh?...<br><br>
-    🙈 Padhu : aha alaa am ledhu andi...<br><br>
-    😄 Vijju : Nakendhuko konchem navvuthunnattu anipistundhe ?....<br><br>
-    😊 Padhu : Haa andi Konchem.....<br><br>
-    ❤️ Vijju : padhu ki inkaaa yekkuvaga & chaala chaala love you❤️... boledenni chocolattulu🍫.... and padhu ki ivee maa mudhulu.... 💋<br><br>
-    🙈 Padhu : Baaaboiii am cheppali ippudu....simple gaa close kotteddam.....
+    😏 Tharun : yenti blusing movement ahh?...<br><br>
+    🙈 Delelu : aha alaa am ledhu andi...<br><br>
+    ❤️ Tharun : Delelu ki chaala chaala love you ❤️
     </p>
     <button onclick="closeFinalPopup()">Close</button>
 </div>
@@ -329,22 +305,8 @@ const page2=document.getElementById("page2");
 const page3=document.getElementById("page3");
 const finalPopup=document.getElementById("finalPopup");
 const okBtn=document.getElementById("okBtn");
-const reject=document.getElementById("reject");
-const noTextAfterHover=document.getElementById("noTextAfterHover");
 const happyMessage=document.getElementById("happyMessage");
 
-let flowerInterval;
-
-/* PAGE1 NO RUN */
-function move(btn){
-    btn.style.position="absolute";
-    btn.style.left=Math.random()*(window.innerWidth-100)+"px";
-    btn.style.top=Math.random()*(window.innerHeight-50)+"px";
-}
-document.getElementById("no1").onmouseover=
-document.getElementById("no1").ontouchstart=function(){move(this);}
-
-/* PAGE1 YES */
 document.getElementById("yes1").onclick=function(){
     page1.classList.add("hidden");
     page2.classList.remove("hidden");
@@ -352,77 +314,24 @@ document.getElementById("yes1").onclick=function(){
     setTimeout(()=>{ okBtn.disabled=false; },5000);
 }
 
-/* PAGE2 OK */
 okBtn.onclick=function(){
     page2.classList.add("hidden");
     page3.classList.remove("hidden");
-    hearts();
+
+    /* CHANGE BACKGROUND TO rose1 */
+    document.body.style.setProperty('--dummy','0');
+    document.styleSheets[0].addRule("body::before","background-image:url('img/rose1.jpg')");
 }
 
-/* PAGE3 NO */
-reject.onmouseover=reject.ontouchstart=function(){
-    this.style.display="none";
-    noTextAfterHover.style.display="block";
-}
-
-/* HEARTS */
-function hearts(){
-    setInterval(()=>{
-        const heart=document.createElement("div");
-        heart.className="heart";
-        heart.innerHTML="❤️";
-        heart.style.left=Math.random()*window.innerWidth+"px";
-        heart.style.top=window.innerHeight+"px";
-        page3.appendChild(heart);
-        setTimeout(()=>heart.remove(),3000);
-    },300);
-}
-
-/* CONTINUOUS FLOWERS (FIXED) */
-function startCelebration(){
-    flowerInterval=setInterval(()=>{
-        const flower=document.createElement("div");
-        flower.className="falling";
-        flower.innerHTML=Math.random()>0.5?"🌹":"🎉";
-        flower.style.left=Math.random()*window.innerWidth+"px";
-        flower.style.top="-20px";
-        page3.appendChild(flower);   /* FIX: body -> page3 */
-        setTimeout(()=>flower.remove(),3000);
-    },300);
-}
-
-function stopCelebration(){
-    clearInterval(flowerInterval);
-}
-
-/* ACCEPT */
 document.getElementById("accept").onclick=function(){
     finalPopup.style.display="block";
-    page3.classList.add("blur-page");
-    startCelebration();
 }
 
-/* CLOSE ALERT */
 function closeFinalPopup(){
     finalPopup.style.display="none";
-    page3.classList.remove("blur-page");
-    stopCelebration();
-
-    document.getElementById("finalText").style.display="none";
-    document.getElementById("finalMsg").style.display="none";
-    document.getElementById("proposalBtns").style.display="none";
-    noTextAfterHover.style.display="none";
-
     happyMessage.style.display="block";
 }
 </script>
 
 </body>
 </html>
-
-
-
-
-
-
-
