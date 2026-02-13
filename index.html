@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>For Delelu ❤️</title>
+<title>For Padhu ❤️</title>
 
 <style>
 body{
@@ -12,9 +12,26 @@ body{
     height:100vh;
 }
 
-/* REMOVE OLD BODY BACKGROUND */
+/* BACKGROUND */
 body::before{
-    display:none;
+    content:'';
+    position:fixed;
+    top:0; left:0;
+    width:100%;
+    height:100%;
+    background-image:url('img/p6.jpg');
+    background-size:cover;
+    background-position:center;
+    z-index:-2;
+}
+
+.blur-overlay{
+    position:fixed;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.3);
+    backdrop-filter:blur(8px);
+    z-index:-1;
 }
 
 /* PAGE COMMON */
@@ -30,29 +47,7 @@ body::before{
     padding:20px;
     box-sizing:border-box;
     transition:0.5s;
-    background-size:cover;
-    background-position:center;
 }
-
-/* PAGE 1 & 2 BACKGROUND (BLUR) */
-#page1, #page2{
-    background-image:url('img/rose3.jpg');
-}
-
-.blur-overlay{
-    position:fixed;
-    width:100%;
-    height:100%;
-    background:rgba(0,0,0,0.3);
-    backdrop-filter:blur(8px);
-    z-index:0;
-}
-
-.page > *{
-    position:relative;
-    z-index:1;
-}
-
 .hidden{
     opacity:0;
     pointer-events:none;
@@ -67,12 +62,10 @@ body::before{
     font-size:clamp(26px,6vw,46px);
     margin-bottom:20px;
     text-shadow:0 0 20px #ff4da6;
-    color:white;
 }
 #page1 h2{
     font-size:clamp(16px,4vw,22px);
     margin-bottom:30px;
-    color:white;
 }
 #page1 .btn{
     margin:15px;
@@ -91,7 +84,7 @@ body::before{
 /* PAGE 2 */
 #page2 h2{
     font-size:clamp(22px,5vw,30px);
-    color:white;
+    color:black;
     max-width:700px;
     text-shadow:0 0 10px red;
 }
@@ -110,9 +103,13 @@ body::before{
     width:100%;
     height:100vh;
     overflow:hidden;
-    background-image:url('img/rose2.jpg');
-    background-size:cover;
-    background-position:center;
+}
+#page3 img{
+    position:absolute;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    z-index:-1;
 }
 
 /* TEXT */
@@ -186,19 +183,19 @@ body::before{
     100%{transform:translateY(-300px);opacity:0;}
 }
 
-/* FLOWERS */
+/* FALLING FLOWERS */
 .falling{
     position:absolute;
     font-size:22px;
     animation:fall 3s linear forwards;
-    pointer-events:none;
+    pointer-events:none; /* FIX */
 }
 @keyframes fall{
     0%{transform:translateY(-50px) rotate(0deg);}
     100%{transform:translateY(100vh) rotate(360deg);}
 }
 
-/* POPUP */
+/* ALERT */
 #finalPopup{
     position:fixed;
     top:18%;
@@ -215,6 +212,8 @@ body::before{
     background:black;
     color:white;
     box-shadow:0 0 40px rgba(255,0,100,0.6);
+    will-change:transform;           /* FIX */
+    backface-visibility:hidden;      /* FIX */
 }
 
 #finalPopup button{
@@ -242,6 +241,13 @@ body::before{
     text-shadow:0 0 20px #ff3366;
     z-index:9998;
 }
+
+/* Mobile */
+@media(max-width:768px){
+    #finalText{width:90%;}
+    #finalMsg{width:90%; bottom:200px;}
+    #noTextAfterHover{width:90%; bottom:150px;}
+}
 </style>
 </head>
 
@@ -251,7 +257,7 @@ body::before{
 
 <!-- PAGE 1 -->
 <div id="page1" class="page">
-    <h1>Delelu, Will You Be My Valentine? ❤️</h1>
+    <h1>Padhu, Will You Be My Valentine? ❤️</h1>
     <h2>YES cheppalo NO cheppalo theliyatledhaa...Ithe Firstu 'NO' button ni velli pattukooo... pattukundaam ante dorakkundaa Paaripothundaa.....ithe 😜</h2>
     <div>
         <button id="yes1" class="btn">Yes 💖</button>
@@ -270,6 +276,7 @@ body::before{
 
 <!-- PAGE 3 -->
 <div id="page3" class="page hidden">
+    <img src="img/p6.jpg" alt="Love Image">
 
     <div id="finalText">
         Anjaneyudi balam🔥💪...
@@ -283,7 +290,7 @@ body::before{
     </div>
 
     <div id="finalMsg">
-        Please Delelu oppukovachu kadaa.... 😇  
+        Please Padhu oppukovachu kadaa.... 😇  
         Oppukokapothe neeku dammunte 'No' meeda cheyyi vesi chudu 😜
     </div>
 
@@ -297,28 +304,124 @@ body::before{
     </div>
 
     <div id="happyMessage">
-        ❤️🌹 Happy Valentine’s Day Delelu 🌹❤️ <br>
+        ❤️🌹 Happy Valentine’s Day Padhu 🌹❤️ <br>
         💖 Forever & Always 💖
     </div>
 </div>
 
 <!-- ALERT -->
 <div id="finalPopup">
-    <h3>💖 Delelu said YES! 💖</h3>
+    <h3>💖 Padhu said YES! 💖</h3>
     <p>
-    😏 Tharun : yenti blusing movement ahh?...<br><br>
-    🙈 Delelu : aha alaa am ledhu andi...<br><br>
-    😄 Tharun : Nakendhuko konchem navvuthunnattu anipistundhe ?....<br><br>
-    😊 Delelu : Haa andi Konchem.....<br><br>
-    ❤️ Tharun : Delelu ki inkaaa yekkuvaga & chaala chaala love you❤️... boledenni chocolattulu🍫.... and Delelu ki ivee maa mudhulu.... 💋<br><br>
-    🙈 Delelu : Baaaboiii am cheppali ippudu....simple gaa close kotteddam.....
+    😏 Vijju : yenti blusing movement ahh?...<br><br>
+    🙈 Padhu : aha alaa am ledhu andi...<br><br>
+    😄 Vijju : Nakendhuko konchem navvuthunnattu anipistundhe ?....<br><br>
+    😊 Padhu : Haa andi Konchem.....<br><br>
+    ❤️ Vijju : padhu ki inkaaa yekkuvaga & chaala chaala love you❤️... boledenni chocolattulu🍫.... and padhu ki ivee maa mudhulu.... 💋<br><br>
+    🙈 Padhu : Baaaboiii am cheppali ippudu....simple gaa close kotteddam.....
     </p>
     <button onclick="closeFinalPopup()">Close</button>
 </div>
 
 <script>
-/* YOUR ENTIRE JS CODE REMAINS EXACT SAME */
+const page1=document.getElementById("page1");
+const page2=document.getElementById("page2");
+const page3=document.getElementById("page3");
+const finalPopup=document.getElementById("finalPopup");
+const okBtn=document.getElementById("okBtn");
+const reject=document.getElementById("reject");
+const noTextAfterHover=document.getElementById("noTextAfterHover");
+const happyMessage=document.getElementById("happyMessage");
+
+let flowerInterval;
+
+/* PAGE1 NO RUN */
+function move(btn){
+    btn.style.position="absolute";
+    btn.style.left=Math.random()*(window.innerWidth-100)+"px";
+    btn.style.top=Math.random()*(window.innerHeight-50)+"px";
+}
+document.getElementById("no1").onmouseover=
+document.getElementById("no1").ontouchstart=function(){move(this);}
+
+/* PAGE1 YES */
+document.getElementById("yes1").onclick=function(){
+    page1.classList.add("hidden");
+    page2.classList.remove("hidden");
+    if(navigator.vibrate){ navigator.vibrate(5000); }
+    setTimeout(()=>{ okBtn.disabled=false; },5000);
+}
+
+/* PAGE2 OK */
+okBtn.onclick=function(){
+    page2.classList.add("hidden");
+    page3.classList.remove("hidden");
+    hearts();
+}
+
+/* PAGE3 NO */
+reject.onmouseover=reject.ontouchstart=function(){
+    this.style.display="none";
+    noTextAfterHover.style.display="block";
+}
+
+/* HEARTS */
+function hearts(){
+    setInterval(()=>{
+        const heart=document.createElement("div");
+        heart.className="heart";
+        heart.innerHTML="❤️";
+        heart.style.left=Math.random()*window.innerWidth+"px";
+        heart.style.top=window.innerHeight+"px";
+        page3.appendChild(heart);
+        setTimeout(()=>heart.remove(),3000);
+    },300);
+}
+
+/* CONTINUOUS FLOWERS (FIXED) */
+function startCelebration(){
+    flowerInterval=setInterval(()=>{
+        const flower=document.createElement("div");
+        flower.className="falling";
+        flower.innerHTML=Math.random()>0.5?"🌹":"🎉";
+        flower.style.left=Math.random()*window.innerWidth+"px";
+        flower.style.top="-20px";
+        page3.appendChild(flower);   /* FIX: body -> page3 */
+        setTimeout(()=>flower.remove(),3000);
+    },300);
+}
+
+function stopCelebration(){
+    clearInterval(flowerInterval);
+}
+
+/* ACCEPT */
+document.getElementById("accept").onclick=function(){
+    finalPopup.style.display="block";
+    page3.classList.add("blur-page");
+    startCelebration();
+}
+
+/* CLOSE ALERT */
+function closeFinalPopup(){
+    finalPopup.style.display="none";
+    page3.classList.remove("blur-page");
+    stopCelebration();
+
+    document.getElementById("finalText").style.display="none";
+    document.getElementById("finalMsg").style.display="none";
+    document.getElementById("proposalBtns").style.display="none";
+    noTextAfterHover.style.display="none";
+
+    happyMessage.style.display="block";
+}
 </script>
 
 </body>
 </html>
+
+
+
+
+
+
