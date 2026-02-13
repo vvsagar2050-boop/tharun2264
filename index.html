@@ -40,10 +40,9 @@ body::before{
     z-index:-1;
     transition:0.4s;
 }
-
 .blur-active{
     backdrop-filter:blur(15px);
-    background:rgba(0,0,0,0.5);
+    background:rgba(0,0,0,0.6);
 }
 
 /* COMMON */
@@ -112,7 +111,6 @@ body::before{
     color:white;
 }
 
-/* FIXED HERE */
 #noTextAfterHover{
     position:absolute;
     bottom:130px;
@@ -121,7 +119,7 @@ body::before{
     max-width:700px;
     font-size:16px;
     font-weight:bold;
-    color:white; /* changed to white */
+    color:white;
     display:none;
     margin-top:15px;
 }
@@ -140,6 +138,19 @@ body::before{
 }
 #reject{
     background:black !important;
+}
+
+/* HAPPY MESSAGE FINAL SCREEN */
+#happyMessage{
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    font-size:32px;
+    color:white;
+    text-align:center;
+    display:none;
+    font-weight:bold;
 }
 
 /* HEARTS */
@@ -170,32 +181,10 @@ body::before{
     color:white;
 }
 
-/* HAPPY SCREEN */
-#happyMessage{
-    position:absolute;
-    top:50%;
-    left:50%;
-    transform:translate(-50%,-50%);
-    font-size:32px;
-    color:white;
-    text-align:center;
-    display:none;
-    font-weight:bold;
-}
-
-/* DESKTOP IMPROVEMENT */
+/* DESKTOP */
 @media(min-width:768px){
-    #finalText{
-        width:50%;
-        font-size:20px;
-    }
-    #finalMsg,
-    #noTextAfterHover{
-        width:50%;
-    }
-    #proposalBtns{
-        width:50%;
-    }
+    #finalText{width:50%;font-size:20px;}
+    #finalMsg,#noTextAfterHover,#proposalBtns{width:50%;}
 }
 </style>
 </head>
@@ -226,29 +215,31 @@ body::before{
 <!-- PAGE 3 -->
 <div id="page3" class="page hidden">
 
-    <div id="finalText">
-        Anjaneyudi balam🔥💪...
-        Anna maata javadaatani Lakshmanudu⚔️...
-        Ichina maata kosam sainyanni ventesukochina Sugreevudu🛡️🐒...
-        Veellandarini thisukuni Seetha kosam antha dooram velladu Raamudu🏹...
-        naku veellu yevaru lekapoina, naa Seetha kosam💖 yentha dooramina velthanu🚶‍♂️🌍...
-        <strong class="mainQuestion">
-            Please nuv naa Seethavi Avuthava?? 🤌🏻💖
-        </strong>
-    </div>
+    <div id="finalContent">
+        <div id="finalText">
+            Anjaneyudi balam🔥💪...
+            Anna maata javadaatani Lakshmanudu⚔️...
+            Ichina maata kosam sainyanni ventesukochina Sugreevudu🛡️🐒...
+            Veellandarini thisukuni Seetha kosam antha dooram velladu Raamudu🏹...
+            naku veellu yevaru lekapoina, naa Seetha kosam💖 yentha dooramina velthanu🚶‍♂️🌍...
+            <strong class="mainQuestion">
+                Please nuv naa Seethavi Avuthava?? 🤌🏻💖
+            </strong>
+        </div>
 
-    <div id="finalMsg">
-        Please Delelu oppukovachu kadaa.... 😇  
-        Oppukokapothe neeku dammunte 'No' meeda cheyyi vesi chudu 😜
-    </div>
+        <div id="finalMsg">
+            Please Delelu oppukovachu kadaa.... 😇  
+            Oppukokapothe neeku dammunte 'No' meeda cheyyi vesi chudu 😜
+        </div>
 
-    <div id="noTextAfterHover">
-        No meeda cheyyi vesthe miss ipoyindha.... ithe......
-    </div>
+        <div id="noTextAfterHover">
+            No meeda cheyyi vesthe miss ipoyindha.... ithe......
+        </div>
 
-    <div id="proposalBtns">
-        <button id="accept" class="btn">Yes 💍</button>
-        <button id="reject" class="btn">No 😜</button>
+        <div id="proposalBtns">
+            <button id="accept" class="btn">Yes 💍</button>
+            <button id="reject" class="btn">No 😜</button>
+        </div>
     </div>
 
     <div id="happyMessage">
@@ -281,6 +272,7 @@ const accept=document.getElementById("accept");
 const finalPopup=document.getElementById("finalPopup");
 const happyMessage=document.getElementById("happyMessage");
 const blurOverlay=document.getElementById("blurOverlay");
+const finalContent=document.getElementById("finalContent");
 
 /* PAGE1 NO MOVE */
 function move(btn){
@@ -319,10 +311,11 @@ accept.onclick=function(){
     blurOverlay.classList.add("blur-active");
 }
 
-/* CLOSE POPUP */
+/* CLOSE POPUP → SHOW FINAL SCREEN */
 function closeFinalPopup(){
     finalPopup.style.display="none";
     blurOverlay.classList.remove("blur-active");
+    finalContent.style.display="none";
     happyMessage.style.display="block";
 }
 
